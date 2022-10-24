@@ -1,0 +1,162 @@
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Kanban</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+    <div class="drag-container"></div>
+    <div class="board">
+        <div class="kanban-demo">
+            <div class="demo">
+                <template class="board-item-template">
+                    <div class="board-item">
+                        <div class="board-item-content">
+                            <div class="board-item-title"></div>
+                            <div class="board-item-handle"></div>
+                            <div class="board-item-action redact">
+                                <img src="/notes.svg" alt="redact">
+                            </div>
+                            <div class="board-item-action delete">
+                                <img src="/delete-board.svg" alt="delete">
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template class="board-column-template">
+                    <div class="board-column">
+                        <div class="board-column-content">
+                            <div class="board-column-header">
+                                <div class="countblock"></div>
+                                <div class="board-column-title"></div>
+                                <button class="board-column-action add">
+                                    <svg
+                                      aria-hidden="true"
+                                      focusable="false"
+                                      role="img"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 448 512"
+                                    >
+                                      <path
+                                        fill="currentColor"
+                                        d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                      ></path>
+                                    </svg>
+                                  </button>
+                            </div>
+                            <div class="board-column-items-container">
+                                <div class="board-column-items"></div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="board-container">
+                    <div class="kanban-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-popup" id="task-info">
+        <div class="info-container">
+            <div class="main">
+                <input class="task-name" autocomplete="off" placeholder="Имя..."></input>
+                <div class="main-block">
+                    <textarea type="text" class="task-comment" placeholder="Комментарий..."></textarea>
+                </div>
+                <div class="task-block">
+                    <input type="text" class="task-task" placeholder="Задача">
+                    <input type="date" class="task-tasklimit">
+                </div>
+            </div>
+            <div class="info">
+                <select class="selector task-tag">
+                    <option value="0">Тег</option>
+                    <option value="1">Готов купить</option>
+                    <option value="2">Сомневается</option>
+                    <option value="3">Собирает инфо</option>
+                </select>
+                <div class="info-block">
+                    <div class="info-header">
+                        Информация
+                    </div>
+                    <div class="info-block-body">
+                        <div class="labels">
+                            <label for="task-channel">Канал:</label>
+                            <a class="whatss" target="_blank" href="">Телефон:</a>
+                            <label for="task-city">Город:</label>
+                            <label for="task-type">Тип:</label>
+                            <label for="task-need">Потребность:</label>
+                            <label for="task-sphere">Сфера:</label>
+                            <label for="task-date">Дата:</label>
+                        </div>
+                        <div class="texts">
+                            <select name="task-channel" class="task-channel modal-select">
+                            </select>
+                            <input name="task-phone" class="task-phone" type="number" placeholder="нет">
+                            <div class="block-city">
+                                <select name="task-city" class="task-city modal-select">
+                                </select>
+                            </div>
+                            <select name="task-type" class="task-type modal-select">
+                                <option value=0>Новичок</option>
+                                <option value=1>Действующий</option>
+                            </select>
+                            <select name="task-need" class="task-need modal-select">
+                                <option value="0">нет</option>
+                                <option value="1">Масла</option>
+                                <option value="2">Парфюм</option>
+                                <option value="3">Масла/Парфюм</option>
+                                <option value="4">Флаконы</option>
+                                <option value="5">Масла/Флаконы</option>
+                                <option value="6">Парфюм/Флаконы</option>
+                                <option value="7">Все</option>
+                            </select>
+                            <input name="task-sphere" class="task-sphere" type="text" placeholder="нет">
+                            <input name="task-date" class="task-date" type="date">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="background"></div>
+        
+    <dialog open><div class="info-container">
+        <div class="main">
+            <input class="task-name" autocomplete="off" placeholder="Имя..."></input>
+            <div class="main-block">
+                <textarea type="text" class="task-comment" placeholder="Комментарий..."></textarea>
+            </div>
+        </div>
+        <div class="info">
+            <div class="info-block">
+                <div class="info-header">
+                    Сведения
+                </div>
+                <div class="info-block-body">
+                    <div class="labels">
+                        <label for="">Срок:</label>
+                        <label for="">Метки:</label>
+                    </div>
+                    <div class="texts">
+                        <input type="date">
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></dialog>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/haltu/muuri@0.9.3/dist/muuri.min.js"></script>
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
